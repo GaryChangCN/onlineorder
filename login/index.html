@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.4.2/css/amazeui.min.css" type="text/css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="hearder" style="width: 100%;height: 50px;padding-top: 10px;padding-right: 10px;  background-color: #0F9FDB; ">
+			<div id="loginReg"style="color: white;float: right; display: ;">
+				<a href="login.html" style="color: inherit;text-decoration: underline;">登陆</a>&nbsp;
+				<a href="reg.html"style="color: inherit;text-decoration: underline;">注册</a>
+			</div>
+			<div id="welcome"style="color: white;float: right; display: none;">
+				欢迎您：<span id="welcomeName"></span>&nbsp;
+				<span id="zhuxiao" style="font-size: small;color: ghostwhite;text-decoration: underline;">
+				注销	
+				</span>
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$.ajax({
+					type:"post",
+					url:"judge.php",
+					async:true,
+					success:function(data){
+						if(data!==""){
+						$("#loginReg").css('display','none');   //通过cookie判断用户是否登陆 如果已经登陆则显示个人中心
+						$("#welcome").css('display','block');
+						$("#welcomeName").text(data);
+						}else{
+							
+						}
+					}
+				});
+			})
+			$("#zhuxiao").click(function(){
+				$.ajax({
+					type:"post",
+					url:"logout.php",
+					async:true,
+					success:function(data){
+						$("#loginReg").css('display','block');
+						$("#welcome").css('display','none');
+					}
+				});
+			})
+		</script>
+	</body>
+
+</script>
+</html>
