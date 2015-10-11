@@ -1,0 +1,290 @@
+div,button{
+	font-family: myfont;
+}
+.container {
+	background: linear-gradient(#ffffff, #dbd9da, #ffffff);
+	width: 100%;
+	padding: 0px;
+}
+.daohang{
+	width: 100%;
+	height: 50px;
+	position: ;
+	top: 0px;
+	border-bottom: 1px solid black;
+	background-color: dimgrey;
+	z-index: 9;
+	text-align: center;
+	color: white;
+	font-family: "微软雅黑";
+	padding-top: 0px;
+}
+.user{      /*侧边栏按钮容器*/
+ width: 30px;
+ height: 30px;	
+ padding: 0;
+ margin: 0px;
+ background-color: dimgrey;
+ right: 35px;
+ top: 10px;
+ position: absolute;
+}
+img#cebian{
+	width: inherit;
+	height: inherit;
+}
+img.logo{
+	width: 45px;
+}
+div.logo{
+	float: left;
+	padding-top: 2px;
+	padding-left: 5px;
+}
+.userpanel{
+	position: fixed;
+	width: 45%;
+	border: 2px solid black;
+	right: 5%;
+	top: 40px;
+	background-color: white;
+	padding: 2px;
+	text-align: center;
+	padding: 0px;
+	display: none;
+}
+.g_list {
+	width: 100%;
+	height: 150px;
+	background-color: #f0efefe;
+	/*border: 1px solid #e3e3e3;*/  /*老版本浅色*/
+	border:  1px solid dimgrey;
+	padding: 2px;
+	margin-top: 5px;
+}
+.panelCss{
+	width: 100%;
+	height: 150px;
+	background-color: #f4f3f3;
+	/*border-right: 1px solid #e3e3e3;*/
+	border-left: 1px solid dimgrey;
+	border-right:1px solid dimgrey;
+	border-bottom: 1px solid dimgrey;
+	padding: 2px;
+	margin: 0px;
+}
+.imgMenu {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+.g_index {
+	text-align: center;
+	padding-top: 5px;
+}
+p.cssP {
+	font-family: myfont;
+	font-size: x-large;
+}
+p.cssP2 {
+	font-family: myfont;
+	font-size: large;
+}
+p.cssP3 {
+	font-family: myfont;
+	font-size: large;
+	margin-top: 10px;
+}
+.endCss{
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 30px;
+	/*background: linear-gradient(#ebe8e8,#e1e0e0,#fcfbfb);
+	background: -webkit-linear-gradient(#ebe8e8,#e1e0e0,#fcfbfb);*/
+	background-color: dimgrey;
+	border-top: 1px solid #000000;
+	padding-left: 90px;
+	font-family: myfont;
+	z-index: 11;
+}
+.shopCarCss{
+	background-color: white;
+	position: fixed;
+	bottom: 2px;
+	width: 50px;
+	height: 50px;
+	left: 25px;
+	border-radius: -webkit-calc(25px);
+	border: 2px solid #000000;
+	z-index: 13;
+}
+.shopListCss{
+	position: fixed;
+	width: 80%;
+	/*height: 200px;*/
+	left: 10%;
+	bottom: 150px;
+	background-color: white;
+	border: 2px solid black;
+	display: none;
+	padding: 2px;
+	z-index: 99;
+}
+.zhezhao{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	opacity: 0.4;
+	z-index: 10;
+	left: 0px;
+	top: 0px;
+	display: none;
+}
+.imgShopcar{
+	width: 40px;
+	position: absolute;
+	left: 3px;
+	top: 5px;
+	z-index: 15;
+}
+.btnCss{
+	position: fixed;
+	right: 25px;
+	bottom: 10px;
+	height: 30px;
+	padding-top: 5px;
+	border: 2px solid black;
+	background-color: white;
+	font-family: myfont;
+	border-radius: 5px;
+	z-index: 17;
+}
+.shopCountCss{
+	position: fixed;
+	left: 60px;
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	bottom: 37px;
+	border: 2px solid black;
+	text-align: center;
+	border-radius: 10px;
+	font-size: x-small;
+	font-weight: 300;
+	z-index: 19;
+}
+.wenziCss{
+	font-family: myfont;
+	text-align: center;
+}
+.addShopCarCss{
+	position: relative;
+	left: 75%;
+	top: 80px;
+	width: 20%;
+	height: 30px;
+	padding-top: 5px;
+	border: 2px solid black;
+	background-color: white;
+	font-family: myfont;
+	border-radius: 5px;
+}
+.shopListCss{
+	padding: 15px;
+	width: 80%;
+}
+.shopListx{
+	font-family: myfont;   
+	width: 100%;
+	height: 40px;
+	padding-top:10px;
+	padding-bottom: 2px;
+	border-bottom: 1px  solid dimgrey;
+}
+
+span#addp{
+	float: right;
+	width: 24px;
+	height: 24px;
+	border: 1px solid black;
+	text-align: center;
+	border-radius: 12px;
+	font-size: medium;
+	margin-left: 2px;
+	font-family: myfont;
+}
+span#addx,span#addd{
+	margin-left: 6px;
+	float: right;
+	width: 24px;
+	height: 24px;
+	border: 1px solid black;
+	text-align: center;
+	border-radius: 50%;
+	font-size: medium;
+	font-family: myfont;
+}
+span#addn{
+	border:  white;
+	float: right;
+	width: 24px;
+	height: 24px;
+	border: 1px solid black;
+	text-align: center;
+	border-radius: 12px;
+	font-size: medium;
+	margin-left: 2px;
+	font-family: myfont;
+}
+span#clearShopCar{
+	border-radius: 0px;
+	width: 40px;
+	height: 40px;
+	padding-top: 5px;
+	border: 0px;
+	float: right;
+	text-align: center;
+	border-radius: 12px;
+	font-size: medium;
+	margin-left: 2px;
+	font-family: myfont;
+}
+#userdingdan{
+	width: 100%;
+	height: 50px;
+	padding-top: 15px;
+	border-bottom: 1px solid dimgrey;
+	color: dimgrey;
+}
+#control{
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid dimgrey;
+}
+#login{
+	position: absolute;
+	left: 2px;
+	color: dimgrey;
+	padding-top: 15px;
+}
+#zhuxiao{
+	position: absolute;
+    left: 2px;
+    color: dimgrey;
+    padding-top: 15px;
+    display: none;
+}
+#reg{
+	position: absolute;
+	right: 40px;
+	color: dimgrey;
+	padding-top: 12px;
+}
+a:link{
+	color: dimgrey;
+}
+a:visited{
+	color: dimgrey;
+}
