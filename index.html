@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>牛排</title>
+		<meta name="x5-fullscreen" content="true" />
+		<meta name="browsermode" content="application" />
+		<link rel="stylesheet" type="text/css" href="css/amazeui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/menu.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style type="text/css">
+			@font-face {
+				font-family: myfont;
+				src: url('js/1.otf');
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<button class="am-btn am-btn-primary" data-am-offcanvas="{target: '#doc-oc-demo2', effect: 'push'}">点击显示侧边栏</button>-->
+		<div class="container">
+			<div class="zhezhao">
+				<!--遮罩图层-->
+			</div>
+			<div class="daohang">
+				<!--用户页面-->
+				<div class="logo"><img class="logo" src="img/漫猫logo.png" /></div>
+				<div style="float: left;font-size:20px;padding-top: 20px; font-family: '微软雅黑';padding-left: 5px;color: red;">
+					</span>M<span style="color: black;">A</span></span>ANCAT COFFEE</div>
+				<button class="user am-btn">
+					<img src="img/cebian.png" id="cebian" data-am-offcanvas="{target: '#doc-oc-demo2', effect: 'push'}" />
+				</button>
+			</div>
+			<!--<div id="userpanel" class="userpanel">
+				<div id="userdingdan">
+					查看订单
+				</div>
+				<div id="control">
+					<button class="am-btn" id="login"><a href="login/login.html">登陆</a></button>
+					<button id="zhuxiao" class="am-btn">注销</button>
+				</div>
+				<div id="reg">
+					<a href="login/reg.html">注册新用户</a>
+				</div>
+			</div>-->
+		</div>
+		<div style="width: 100%;height: 200px;font-family: myfont;padding-top: 100px;text-align: center;">
+			漫猫咖啡-无纸化菜单3.0
+		</div>
+		<div class="endCss" id="end">
+			<!--底部导航条-->
+			已选:0件
+		</div>
+		<!--购物车按钮-->
+		<button class="shopCarCss am-btn" id="shopCar">
+			<img class="imgShopcar" src="img/shopcar.gif" />
+		</button>
+		<div class="shopListCss" id="shopList">
+			<!--popup弹出已选商品列表-->
+			<div class="shopListTittle" style="text-align: center;font-family: myfont;padding-top: 2px;font-size: larger;border-bottom: 1px solid dimgrey;">
+				已选商品
+				<span id="clearShopCar">
+					清空
+				</span>
+			</div>
+		</div>
+
+		</div>
+		<!--确认购买按钮-->
+		<button class="am-btn btnCss" id="shopEnter">确认购买</button>
+		<!--购物车上面角标显示购买了几件商品-->
+		<div class="shopCountCss" id="shopCount">
+			0
+		</div>
+		<!--=============侧边栏==================-->
+		<div id="doc-oc-demo2" class="am-offcanvas">
+			<div class="am-offcanvas-bar am-offcanvas-bar-flip">
+				<div class="am-offcanvas-content">
+					<div style="color: dimgrey; font-size: larger;">
+						欢迎您：<span id="user"></span>
+					</div>
+					<div id="userdingdan">
+						查看订单
+					</div>
+					<div id="control">
+						<div class="am-btn" id="login"><a href="login/login.html">登陆</a></div>
+						<div id="zhuxiao" class="am-btn">注销</div>
+						<div id="reg"><a href="login/reg.html">注册新用户</a></div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+	</body>
+	<script type="text/javascript">
+		var g_id, g_name, g_price, g_eng_name, g_pic_name, g_jianjie, j, ii, ij;
+		$.ajax({
+			type: "post",
+			url: "g_id_number.php",
+			async: false,
+			success: function(data1) {
+				g_id = data1;
+			}
+		});
+		$.ajax({
+			type: "post",
+			url: "g_name.php",
+			async: false,
+			success: function(data2) {
+				g_name = data2;
+			}
+		});
+		$.ajax({
+			type: "post",
+			url: "g_eng_name.php",
+			async: false,
+			success: function(data3) {
+				g_eng_name = data3;
+			}
+		});
+		$.ajax({
+			type: "post",
+			url: "g_price.php",
+			async: false,
+			success: function(data4) {
+				g_price = data4;
+			}
+		});
+		$.ajax({
+			type: "post",
+			url: "g_jianjie.php",
+			async: false,
+			success: function(data5) {
+				g_jianjie = data5;
+			}
+		});
+	</script>
+	<script src="js/good_list.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
