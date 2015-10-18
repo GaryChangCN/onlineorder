@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>商品更改</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../js/ajaxfileupload.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/amazeui.min.css" />
+		<link rel="stylesheet" type="text/css" href="changegoods.css" />
+		<style type="text/css">
+			@font-face {
+				font-family: myfont;
+				src: url('../js/1.otf');
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="hearder">
+				<ul id="fuyuansu">
+					<li style="color: #000000;">上架商品</li>
+					<li>下架商品</li>
+					<li>修改商品</li>
+					<li>添加分组</li>
+					<li>删除分组</li>
+				</ul>
+			</div>
+			<div class="conten">
+					<div class="lie1">
+						选择分组
+					</div>
+					<div class="lie2">
+						<select id="xuanzefenzu" style="width: 100%;>
+							<!--<option value="a">Apple</option>
+							<option value="b" selected>Banana</option>
+							<option value="o">Orange</option>
+							<option value="m">Mango</option>-->
+						</select>
+					</div>
+					<div class="lie3">
+						商品名
+					</div>
+					<div class="lie4">
+						<input type="text" style="width: 100%;" id="cn_name"/>
+				    </div>	
+				    <div class="lie5">
+				    	英文名
+				    </div>
+				    <div class="lie6">
+				    	<input type="text" style="width: 100%;" id="eng_name1"/>
+				    </div>
+				    <div class="lie15">
+				    	价格
+				    </div>
+				    <div class="lie16">
+				    	<input type="text" style="width: 100%;" id="jiage"/>
+				    </div>
+				    <div class="lie7">
+				    	简介
+				    </div>
+				    <div class="lie8">
+				    	<textarea style="width: 100%;" id="xiangqing"></textarea>
+				    </div>
+				    <div class="lie9">
+				    	图片
+				    </div>
+				    <div class="lie10">
+				    	<input type="file" name="img" id="img" value="" />
+				    </div>
+				    <div class="lie11">
+				    	<button class="am-btn btn1" id="btn1">上架</button>
+				    </div>
+			<div class="footer">
+				<div class="goods">
+					&Delta;商品修改
+				</div>
+				<div class="onlineorder ">
+					实时订单
+				</div>
+				<div class="user">
+					订单管理&Delta;
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="changegoods.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
