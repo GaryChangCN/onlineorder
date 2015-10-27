@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>登陆</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.4.2/css/amazeui.min.css" type="text/css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="../css/login.css" />
+		<style>
+		@font-face {
+				font-family: myfont;
+				src: url('../js/1.otf');
+			}
+		</style>
+	</head>
+         
+	<body>
+		<div class="container">
+			<div class="loginlogo">
+				<img class="loginlogo" src="../img/admin/未标题-2.jpg"/>
+			</div>
+			<div class="dengluwenzi">漫猫咖啡</div>
+			<div class="dengluwenzi2">
+				欢迎您
+			</div>
+			<div>
+				<div class="am-input-group am-input-group-lg "id="userNameDiv">  <!--用户名-->
+					<!--<span class="am-input-group-label span1"><i class="am-icon-user am-icon-fw"></i></span>-->
+					<input type="text" class="am-form-field input1" placeholder="用戶名" id="userName" autofocus="autofocus" onfocus="fun2()"/>
+				</div>
+
+				<div class="am-input-group am-input-group-lg" id="userNameDiv1">   <!--密码-->
+					<!--<span class="am-input-group-label span1"><i class="am-icon-lock am-icon-fw"></i></span>-->
+					<input type="password" class="am-form-field" placeholder="密码" id="userPassword" onfocus="fun1()">
+				</div>
+				<div class="submit1">
+				<input type="button" name="" class="am-btn am-btn-primary input1" id="userSubmit" value="登陆"  />    <!--登陆按钮-->
+				</div>
+                <div class="reg1"><a href="reg.html">点击注册</a></div>
+			</div>
+		</div>
+	</body>
+     <script type="text/javascript">
+     function fun1(){
+     	if($("#userName").val()==""){
+     		$("#userNameDiv").addClass("am-input-group-danger");
+     		$("#userName").attr("placeholder","用户名不能为空");
+     		$("#userSubmit").addClass("am-disabled");
+     		$("#userPassword").removeAttr('placeholder');
+     	}else{
+     		$("#userSubmit").removeClass("am-disabled");
+     	}
+     };
+     function fun2(){
+     	$("#userNameDiv").removeClass("am-input-group-danger");
+     	$("#userName").removeAttr("placeholder");
+     	$("#userPassword").attr("placeholder","请输入密码");
+     };
+     	$("#userSubmit").click(function(){
+     		var userPassword=$("#userPassword").val();
+     		var userName=$("#userName").val();
+     		$.ajax({                    //使用ajax传值给后台处理验证用户名密码
+     			type:"post",
+     			url:"sure.php",
+     			async:true,
+     			dataType:"html",
+     			data:{
+     				"userName":userName,
+     				"userPassword":userPassword
+     			},
+     			success:function(data){
+     				if(data.indexOf("success")>=0){
+     					$.ajax({                     
+     						type:"post",
+     						url:"inserttable.php",
+     						async:false,
+     						success:function(){
+//   							alert("ok");
+     						}
+     					});
+     					self.location.href="../index.html";
+     				}else if(data.indexOf("fail")>=0){
+     					alert("账号或密码输入错误！");
+     				}else if(data.indexOf("nouser")>=0){
+     					alert("不存在该用户");
+     				}else {
+     					alert("未知错误，请联系管理员");
+     				}
+     			}
+     		});
+     	});
+     	$(document).ready(function(){
+     		var x=$(window).height();
+     		$(".container").css('height',x);
+     		$("#userSubmit").addClass("am-disabled")
+     	})
+     </script>
+</html>

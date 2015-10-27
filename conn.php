@@ -1,7 +1,7 @@
 <?php
 $hostname = 'localhost';
-$user = 'xxxxx';
-$password = 'xxxx';
+$user = 'tinytin';
+$password = 'tinytin';
 //连接数据库
 $link = mysql_connect($hostname, $user, $password);
 if (!$link) {

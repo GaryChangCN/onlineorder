@@ -1,0 +1,69 @@
+.container{
+background-color: #dad6d6;
+}
+.loginlogo{
+	width: 100%;
+	margin-bottom: 15px;
+}
+.dengluwenzi{
+	position:absolute;
+	top: 70px;
+	left: 30px;
+	font-family: "宋体";
+	font-size: xx-large;
+	color: #1e1e1e;
+	font-weight: 100;
+}
+.dengluwenzi2{
+	position:absolute;
+	top: 110px;
+	left: 30px;
+	font-family: "宋体";
+	font-size:large;
+	color: #1e1e1e;
+	font-weight: 100;
+}
+/*.span1{
+	background-color: white;
+    border-left: 0px;
+    border-top: 0px;
+    border-right: 0px;
+}*/
+.input1{
+	width: 100%;
+}
+.input0{
+	width: 100%;
+}
+.input2{
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+input{
+	font-family: "宋体";
+}
+#userNameDiv,#userNameDiv1{
+	width: 100%;
+}
+#userSubmit{
+	width: 80%;
+	border-radius: 17px;
+	background-color: dimgrey;
+}
+#userReg{
+	width: 80%;
+	border-radius: 17px;
+	background-color: dimgrey;
+}
+
+.submit1{
+	text-align: center;
+	padding: 35px;
+}
+.reg1{
+	text-align: center;
+}
+a{
+	font-family: "宋体";
+	color: dimgrey;
+}

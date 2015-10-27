@@ -1,5 +1,5 @@
 div,button{
-	font-family: myfont;
+	font-family: "宋体";
 }
 .container {
 	background: linear-gradient(#ffffff, #dbd9da, #ffffff);
@@ -19,6 +19,12 @@ div,button{
 	font-family: "微软雅黑";
 	padding-top: 0px;
 }
+.suggestion{
+	color: #000000;
+	position: absolute;
+	left: 55px;
+	top: 25px;
+}
 .user{      /*侧边栏按钮容器*/
  width: 30px;
  height: 30px;	
@@ -28,6 +34,26 @@ div,button{
  right: 35px;
  top: 10px;
  position: absolute;
+}
+#toppp{
+	width: 40px;
+	height:40px;
+	position: fixed;
+	bottom: 88px;
+	right: 20px;
+	border: 1px solid black;
+	background-color: white;
+	border-radius: 50%;
+	opacity: 1;
+	display: none;
+}
+img#topp{
+	width: 25px;
+	height: 25px;
+	opacity: 1;
+	position: absolute;
+	right: 6px;
+	top: 6px;
 }
 img#cebian{
 	width: inherit;
@@ -83,15 +109,15 @@ div.logo{
 	padding-top: 5px;
 }
 p.cssP {
-	font-family: myfont;
+	font-family: "宋体";
 	font-size: x-large;
 }
 p.cssP2 {
-	font-family: myfont;
+	font-family: "宋体";
 	font-size: large;
 }
 p.cssP3 {
-	font-family: myfont;
+	font-family: "宋体";
 	font-size: large;
 	margin-top: 10px;
 }
@@ -105,7 +131,7 @@ p.cssP3 {
 	background-color: dimgrey;
 	border-top: 1px solid #000000;
 	padding-left: 90px;
-	font-family: myfont;
+	font-family: "宋体";
 	z-index: 11;
 }
 .shopCarCss{
@@ -115,7 +141,7 @@ p.cssP3 {
 	width: 50px;
 	height: 50px;
 	left: 25px;
-	border-radius: -webkit-calc(25px);
+	border-radius: 25px;
 	border: 2px solid #000000;
 	z-index: 13;
 }
@@ -157,7 +183,7 @@ p.cssP3 {
 	padding-top: 5px;
 	border: 2px solid black;
 	background-color: white;
-	font-family: myfont;
+	font-family: "宋体";
 	border-radius: 5px;
 	z-index: 17;
 }
@@ -176,7 +202,7 @@ p.cssP3 {
 	z-index: 19;
 }
 .wenziCss{
-	font-family: myfont;
+	font-family: "宋体";
 	text-align: center;
 }
 .addShopCarCss{
@@ -188,7 +214,7 @@ p.cssP3 {
 	padding-top: 5px;
 	border: 2px solid black;
 	background-color: white;
-	font-family: myfont;
+	font-family: "宋体";
 	border-radius: 5px;
 }
 .shopListCss{
@@ -196,7 +222,7 @@ p.cssP3 {
 	width: 80%;
 }
 .shopListx{
-	font-family: myfont;   
+	font-family: "宋体";   
 	width: 100%;
 	height: 40px;
 	padding-top:10px;
@@ -213,7 +239,7 @@ span#addp{
 	border-radius: 12px;
 	font-size: medium;
 	margin-left: 2px;
-	font-family: myfont;
+	font-family: "宋体";
 }
 span#addx,span#addd{
 	margin-left: 6px;
@@ -224,7 +250,7 @@ span#addx,span#addd{
 	text-align: center;
 	border-radius: 50%;
 	font-size: medium;
-	font-family: myfont;
+	font-family: "宋体";
 }
 span#addn{
 	border:  white;
@@ -236,7 +262,7 @@ span#addn{
 	border-radius: 12px;
 	font-size: medium;
 	margin-left: 2px;
-	font-family: myfont;
+	font-family: "宋体";
 }
 span#clearShopCar{
 	border-radius: 0px;
@@ -249,42 +275,61 @@ span#clearShopCar{
 	border-radius: 12px;
 	font-size: medium;
 	margin-left: 2px;
-	font-family: myfont;
+	font-family: "宋体";
 }
-#userdingdan{
+.xinxi{
 	width: 100%;
 	height: 50px;
 	padding-top: 15px;
-	border-bottom: 1px solid dimgrey;
-	color: dimgrey;
+}
+#userdingdan{
+	position: absolute;
+	right: 40px;
+	color:  #a0a0a0;
+}
+.zhuohao{
+	position: absolute;
+	left: 15px;
+	color: #A0A0A0;
 }
 #control{
 	width: 100%;
 	height: 50px;
-	border-bottom: 1px solid dimgrey;
+	border-bottom: 1px  dashed dimgrey;
 }
 #login{
 	position: absolute;
 	left: 2px;
-	color: dimgrey;
+	color: #A0A0A0;
 	padding-top: 15px;
 }
 #zhuxiao{
 	position: absolute;
     left: 2px;
-    color: dimgrey;
+    color: #A0A0A0;
     padding-top: 15px;
     display: none;
 }
 #reg{
 	position: absolute;
 	right: 40px;
-	color: dimgrey;
+	color: #A0A0A0;
 	padding-top: 12px;
 }
 a:link{
-	color: dimgrey;
+	color: #A0A0A0;
 }
 a:visited{
-	color: dimgrey;
+	color: #A0A0A0;
 }
+#fenzu{
+	width: 100%;
+	padding: 15px;
+}
+.fenzux{
+	color: #A0A0A0;
+	font-size: medium;
+	width: 100%;
+	border-top: 1px dashed dimgrey;
+}
+

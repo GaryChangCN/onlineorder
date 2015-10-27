@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<title></title>
+	</head>
+	<style type="text/css">
+		.container {
+			width: 100%;
+			text-align: center;
+		}
+		.container div {
+			margin-bottom: 15px;
+		}
+		.shuoming{
+			font-size:  x-small;
+			color: #A0A0A0;
+		}
+	</style>
+
+	<body>
+		<div class="container">
+			<form action="xiugaishangpin.php" method="post">
+				选择分组
+				<select id="select1" name="select1">
+					<option disabled="">请选择</option>
+				</select>
+				<hr /> 选择商品
+				<select id="selectgood" name="select2">
+					<option disabled="">请选择</option>
+				</select>
+				<hr />
+				<div class="shuoming">
+					在下列选项中直接选择要修改的商品信息然后上传即可<br />
+					若出现“选择商品”出不来，刷新本页面即可
+				</div>
+				<hr />商品名
+				<input type="text" name="name" id="name" value="" />
+				<hr /> 价格
+				<input type="text" name="price1" id="price1" value="" />
+				<hr /> 英文名
+				<input type="text" name="eng_name1" id="eng_name1" value="" />
+				<hr /> 简介
+				<textarea name="jianjie" rows="2" cols=""></textarea>
+				<!--<hr /> 图片-->
+				<input type="file" name="file" id="file" value=""  style="display: none;"/>
+				<hr />
+				<input type="submit" value="确认修改" />
+			</form>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var fenzu_a = new Array;
+		var a, b;
+		$(document).ready(function() { //加载商品列表
+			liebiao();
+		});
+
+		function liebiao() { //查询分组列表
+			$.ajax({
+				type: "post",
+				url: "../z_name.php",
+				async: false,
+				success: function(data) {
+					fenzu_a = data.split("#");
+					for (var i = 1; i <= fenzu_a.length; i++) {
+						$("#select1").append("<option id='option1' value='" + fenzu_a[i - 1] + "'>" + fenzu_a[i - 1] + "</option>");
+					}
+				}
+			});
+		};
+		$("#select1").change(function() { //根据分组列表 显示对应商品
+			a = $(this).val();
+			$.ajax({
+				type: "post",
+				url: "../g_name.php",
+				async: false,
+				data: {
+					"x_name": a
+				},
+				success: function(data) {
+					var selectgood_a = new Array;
+					selectgood_a = data.split("#");
+					$("#selectgood").children().remove();
+					for (var i = 1; i <= selectgood_a.length; i++) {
+						//$("#selectgood").append("<div class='good'>"+selectgood_a[i-1]+"</div>");
+						$("#selectgood").append("<option id='option2' value='" + selectgood_a[i - 1] + "'>" + selectgood_a[i - 1] + "</option>");
+					}
+				}
+			});
+			b = $("#selectgood").val();
+			chaxun();
+		});
+		$("#selectgood").change(function() {
+			b = $(this).val();
+			chaxun();
+		})
+
+		function chaxun() {
+			$.ajax({
+				type: "post",
+				url: "chaxun.php",
+				async: false,
+				data: {
+					"a": a,
+					"b": b
+				},
+				success: function(data) {
+					var chaxun_a=new Array;
+					chaxun_a=data.split("#");
+					$("input[name='name']").attr('placeholder',$("#selectgood").val());
+					$("input[name='price1']").attr('placeholder',chaxun_a[0]);
+					$("input[name='eng_name1']").attr('placeholder',chaxun_a[1]);
+					$("textarea[name='jianjie']").attr('placeholder',chaxun_a[2]);
+				}
+			});
+		}
+	</script>
+
+</html>

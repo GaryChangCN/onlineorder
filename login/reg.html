@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.4.2/css/amazeui.min.css" type="text/css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="../css/login.css"/>
+		<style>
+		@font-face {
+				font-family: myfont;
+				src: url('../js/1.otf');
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div id="">
+				<img class="loginlogo" src="../img/admin/手绘地图640.jpg"/>
+			</div>
+			<div class="dengluwenzi" ><a href="../new_menu.html">漫猫咖啡</a></div>
+			<div class="dengluwenzi2"><a href="../new_menu.html">欢迎您</a></div>
+			<div>
+				<div class="am-input-group am-input-group-lg input2" id="userNameDiv">
+					<!--用户名-->
+					<input type="text" class="am-form-field input0" placeholder="用戶名" id="userName"  onfocus="fun1()"/>
+				</div>
+
+				<div class="am-input-group am-input-group-lg input2"  id="userPassword1Div">
+					<!--密码-->
+					<input type="password" class="am-form-field input0" placeholder="密码" id="userPassword1" onfocus="fun2()"/>
+				</div>
+				<div class="am-input-group am-input-group-lg input2" id="userPassword2Div">
+					<!--重复密码-->
+					<input type="password" class="am-form-field input0" placeholder="重复密码" id="userPassword2" onfocus="fun3()">
+				</div>
+					<input type="button" class="am-btn am-disabled" id="userReg" value="注册" style="width: 50%;left: 25%;position: absolute;"onfocus="fun4()" />
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function fun1(){
+			$("#userNameDiv").removeClass("am-input-group-danger").removeAttr("placeholder");
+			$("#userName").removeAttr("placeholder");
+		}
+		function fun2(){                                          //密码1为空后弹出警告 重新输入用户名则去掉红色框
+			$("#userPassword1Div").removeClass("am-input-group-danger");
+			$("#userPassword1").removeAttr("placeholder");
+			var a1 = $("#userName").val();                        //若 用户名 为空则显示红色框 并说明用户名不能为空
+			if (a1 == "") {
+				$("#userNameDiv").addClass("am-input-group-danger");
+				$("#userName").attr('placeholder', '用户名不能为空');
+			}else{
+				$("#userReg").removeClass("am-disabled");
+			}
+		}
+		function fun3(){                                        //若 密码 为空 则 密码1显示红色框 并说明用户名不能为空
+			var a1 = $("#userPassword1").val();
+			$("#userPassword2").removeAttr("placeholder");
+			if (a1 == "") {
+				$("#userPassword1Div").addClass("am-input-group-danger");
+				$("#userPassword1").attr('placeholder', '密码不能为空');
+			}
+			$("#userPassword2Div").removeClass("am-input-group-danger");  //重新输入密码时 红色框移除
+		}
+		function fun4(){
+			var a1 = $("#userPassword2").val();
+			if (a1 == "") {
+				$("#userPassword2Div").addClass("am-input-group-danger");
+				$("#userPassword2").attr('placeholder', '密码不能为空');
+			}
+		}
+		$("#userReg").click(function() { //检验两次密码是否输入相同
+			var userName=$("#userName").val();
+			var userPassword1 = $("#userPassword1").val();
+			var userPassword2 = $("#userPassword2").val();
+			if (userPassword1 == userPassword2) {
+				if (userPassword1=="") {
+					alert("请输入密码")
+				} else{                                      //通过ajax把用户名密码上传
+					$.ajax({
+						type:"post",
+						url:"insert.php",
+						async:true,
+						dataType:"html",
+						data:{
+							"userName":userName,
+							"userPassword":userPassword1
+						},
+						success:function(data){
+							if(data.indexOf("success")>=0){
+				           alert("注册成功，正在跳转到登陆界面");
+				            self.location.href="login.html";
+							}else if(data.indexOf("fail")>=0){
+								alert("用户名已存在");
+							}
+						}
+					});
+				}
+			} else {
+				$(function() {                                                          //弹出模态框  两次密码不同
+                    alert("两次密码不相同，请重新输入。");
+					$("#userPassword1Div,#userPassword2Div").addClass("am-input-group-danger");
+				});
+			}
+		})
+		$(document).ready(function(){
+     		var x=$(window).height();
+     		$(".container").css('height',x);
+     	})
+	</script>
+
+</html>
+ 

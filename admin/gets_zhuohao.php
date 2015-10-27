@@ -5,9 +5,9 @@
 	$data2=$_POST['data2'];
 	mysql_select_db("login",$link);
 	//$time1=date("m-d",time());
-	$q=mysql_query("select s_min from $data2 where s_time='$time1'",$link);
+	$q=mysql_query("select s_zhuohao from $data2 where s_time='$time1'",$link);
 	while($a=mysql_fetch_array($q)){
-		$aa[]=$a['s_min'];
+		$aa[]=$a['s_zhuohao'];
 	}
 	$c=implode("#", $aa);
 	echo $c;

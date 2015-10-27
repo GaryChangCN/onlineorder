@@ -6,17 +6,24 @@ var g_price_a = new Array;
 var g_jianjie_a = new Array;
 var g_pic_name_a = new Array;
 var z_name_a = new Array;
-
+var progress = $.AMUI.progress;   //进度条
 function change(a) {
+	$(".suggestion").text(a);
 		$.ajax({
 			type: "post",
 			url: "g_id_number.php",
 			async: false,
+			beforeSend: function(){
+			   progress.start();     // 加载进度条
+			},
 			data: {
 				"x_id": a
 			},
 			success: function(data1) {
 				g_id = data1;
+			},
+			complete:function(){
+				progress.done();//进度条加载完毕
 			}
 		});
 		$.ajax({
@@ -81,7 +88,7 @@ function change(a) {
 		g_pic_name_a = g_pic_name.split("#");
 		$(".container").children().remove();
 		for (var i = 1; i <= g_id; i++) {
-			$(".container").append("<div class='g_list' id='g_list" + i + "'><img class='imgMenu' src='img/" + g_pic_name_a[i - 1] + "'/><div class='g_index'id='g_con" + i + "'></div></div>");
+			$(".container").append("<div class='g_list' id='g_list" + i + "'><img alt='"+g_pic_name_a[i-1]+"' class='imgMenu' src='img/" + g_pic_name_a[i - 1] + "'/><div class='g_index'id='g_con" + i + "'></div></div>");
 			$("#g_con" + i + "").html("<p class='cssP'>" + g_name_a[i - 1] + "</p>"); //通过ajax把商品名传入
 			$("#g_con" + i + "").append("<p class='cssP2'>" + g_eng_name_a[i - 1] + "</p>"); //把商品英文名传入
 			$("#g_con" + i + "").append("<p class='cssP3'>价格：" + g_price_a[i - 1] + "</p>"); //商品价格
@@ -130,38 +137,27 @@ $(document).ready(function() {
 	});
 	$.ajax({
 		type: "post",
-		url: "z_id.php",
-		async: false,
-		success: function(data6) {
-			z_id = data6;
-		}
-	});
-	$.ajax({
-		type: "post",
 		url: "z_name.php",
 		async: false,
 		success: function(data7) {
 			z_name = data7;
 		}
 	});
-	z_name_a = z_name.split("#");
-	for (var x1 = 1; x1 <= z_id; x1++) {
+	z_name_a = z_name.split("#");//添加商品分组信息
+	for (var x1 = 1; x1 <= z_name_a.length; x1++) {
 		$("#fenzu").append("<div id='fenzux' class='fenzux am-btn'>" + z_name_a[x1 - 1] + "</div>")
 	};
 });
-//一下为引用函数================================
+//一下为引用函数=======================================================================================================
 $(document).ready(function() {
-	var aa = "牛排";
+	var aa = "热门推荐";
 	change(aa);
 });
-//$("#shopList").delegate("div span#addx", "click", function() { //点击X号 删除这个商品
-//	$(this).parent().remove();
-//});
-$("#fenzu").delegate("div#fenzux","click",function(){
+$("#fenzu").delegate("div#fenzux","click",function(){   //切换分组
 	var a= $(this).text();
 	change(a);
 	$(".am-offcanvas").offCanvas('close');
-})
+});
 function add() { //定义函数add  添加购物车函数          ii为全局变量 代表已选商品个数
 	ii = $("#shopCount").text();
 	ii = parseInt(ii) + 1;
@@ -183,6 +179,7 @@ function addList(a) { //定义函数addList 添加商品到已选列表
 function addDataBase() { //把用户订单添加到数据库中
 	var a = $("#shopList").children("div#shopListx").text();
 	var names = $("#user").text();
+	var zhuohao=$("span#zhuohao").text();
 	if (names == "") {
 
 	} else {
@@ -195,7 +192,8 @@ function addDataBase() { //把用户订单添加到数据库中
 			async: false,
 			data: {
 				"goods": a,
-				"names": name2
+				"names": name2,
+				"zhuohao":zhuohao
 			},
 			success: function() {
 				alert("提交成功");
@@ -260,25 +258,6 @@ $(window).scroll(function() { //添加回到顶部按钮  当屏幕下拉超过1
 		$("#toppp").fadeOut();
 	}
 });
-//$("#cebian").click(function(){
-//	$.ajax({
-//			type: "post",
-//			url: "z_id.php",
-//			async: false,
-//			success: function(data6) {
-//				z_id = data6;
-//			}
-//		});
-//		$.ajax({
-//			type: "post",
-//			url: "z_name.php",
-//			async: false,
-//			success: function(data7) {
-//                z_name=data7;
-//			}
-//		});
-//		z_name_a=z_name.split("#");
-//		for (var x1 = 1; x1 <= z_id; x1++) {
-//          $("#fenzu").append("<div id='fenzux' class='fenzux am-btn'>"+z_name_a[x1-1]+"</div>")
-//		}
-//});
+$("button.user").click(function(){
+	$('#doc-oc-demo2').offCanvas({effect: 'push'});
+})

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+			<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<title></title>
+		<style type="text/css">
+			a{
+				font-size: small;
+				color: #AAAAAA;
+			}
+			#submit{
+				width: 70%;
+				height: 30px;
+				background-color: white;
+				border: 2px solid black;
+				border-radius: 8px;
+			}
+			.select1{
+				width: 100%;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="select1">
+			选择分组<br />
+			<select id="select1">
+			   <option disabled="" value="请选择">请选择</option>
+		    </select><a id="a1">必填</a>
+		</div>
+		<form action="frame.php" method="post" enctype="multipart/form-data" style="text-align: center;">
+			中文名</br>
+			<input type="text" name="name0" id="name0" value=" " /><a>必填</a><hr/>
+			英文名</br>
+			<input type="text" name="eng_name" id="eng_name" value=" " /><a>必填</a><hr/>
+			价格</br>
+			<input type="text" name="price" id="price" value=" " /><a>必填</a><hr />
+			简介<br />
+		<!--	<input  name="jianjie" id="jianjie" value=" " /><a>必填</a><hr />-->
+		   <textarea name="jianjie" rows="2" cols=""></textarea><a>必填</a><hr />
+			<input type="text" name="fenzu" id="fenzu" style="display:none ;"/>
+			图片<br />
+			<input type="file" name="file" id="file" value=" " /><a>必填</a><hr />
+			<input id="submit" type="submit" value="提交"/>
+		</form>
+	</body>
+	<script type="text/javascript">
+		$.ajax({
+			type:"post",
+			url:"../z_name.php",
+			async:false,
+			success:function(data){
+				var fenzu_a=data.split("#");
+				for (var i=1;i<=fenzu_a.length;i++) {
+					$("#select1").append("<option id='option1' value='"+fenzu_a[i-1]+"'>"+fenzu_a[i-1]+"</option>")
+				};
+			}
+		});
+		$("#select1").change(function(){
+            var a=$(this).val();
+            $("#fenzu").val(a);
+		});
+        $("input[name='name0']").focus(function(){
+        	if($("#select1").val()==null){
+        		$("#a1").text("你还没有选择分组！").css('color','#BE2924');
+        	}
+        });
+        $("#select1").change(function(){
+        	$("#a1").text("必填").css('color','#AAAAAA');
+        })
+	</script>
+</html>
