@@ -1,9 +1,10 @@
-var s_name, s_goods, s_shuliang, s_zhuohao, s_min;
+var s_name, s_goods, s_shuliang, s_zhuohao, s_min,s_id;
 var s_name_a = new Array;
 var s_goods_a = new Array;
 var s_shuliang_a = new Array;
 var s_zhuohao_a = new Array;
 var s_min_a = new Array;
+var s_id_a=new Array;
 var width1 = $(window).width();
 var width2 = 80;
 var left1 = (width1 - width2) / 2;
@@ -78,16 +79,54 @@ function lunxun() {                    //轮询显示实时订单
 			s_min = data;
 		}
 	});
+	$.ajax({
+		type: "post",
+		url: "gets_id.php",
+		async: false,
+		data: {
+			'data1': date1,
+			'data2':"shishidingdan"
+		},
+		success: function(data) {
+			s_id = data;
+		}
+	});
 	s_name_a = s_name.split("#");
 	s_goods_a = s_goods.split("#");
 	s_shuliang_a = s_shuliang.split("#");
 	s_zhuohao_a = s_zhuohao.split("#");
 	s_min_a = s_min.split("#");
+	s_id_a=s_id.split("#");
 	$("tbody").children().remove();
 	for (var i = 1; i <= s_name_a.length; i++) {
-		$("tbody").append("<tr><th>" + i + "</th><th>" + s_name_a[i - 1] + "</th><th>" + s_goods_a[i - 1] + "</th><th>" + s_shuliang_a[i - 1] + "</th><th>" + s_zhuohao_a[i - 1] + "</th><th>" + s_min_a[i - 1] + "</th></tr>")
+		$("tbody").append("<tr><th>" + s_id_a[i-1] + "</th><th>" + s_name_a[i - 1] + "</th><th>" + s_goods_a[i - 1] + "</th><th>" + s_shuliang_a[i - 1] + "</th><th>" + s_zhuohao_a[i - 1] + "</th><th>" + s_min_a[i - 1] + "</th><th>√</th></tr>")
 	};
 };
+$(".content table tbody").delegate("tr","click",function(){
+	//$(this).children("th:eq(6)").text("x");
+	var a=$(this).children("th:eq(0)").text();   //编号
+	//var b=$(this).children("th:eq(1)").text();  //用户名
+	$(this).hide("normal");
+	$.ajax({
+		type:"post",
+		url:"deleshishidingdan.php",
+		async:false,
+		data:{
+			"s_id":a
+//			"s_name":b
+		},
+		success:function(data){
+			if(data.indexOf("登录")>=0){
+				alert("请先登录");
+			}else if(data.indexOf("已完成")>=0){
+				alert("已完成编号为："+a+"的订单");
+				window.location.reload();
+			}
+		}
+	});
+});
+
+
 $(function() { //每隔10秒加载一次
 	lunxun();
 	window.setInterval(lunxun, 10000);

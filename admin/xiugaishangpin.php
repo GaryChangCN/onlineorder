@@ -8,7 +8,7 @@ $price = $_POST['price1'];
 $eng_name = $_POST['eng_name1'];
 $jianjie = $_POST['jianjie'];
 $coo = $_COOKIE['password'];
-$pic = $_FILES['file']['name'];
+//$pic = $_FILES['file']['name'];
 //读取cookies
 session_id($coo);
 session_start();

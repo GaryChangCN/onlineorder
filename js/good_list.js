@@ -92,6 +92,7 @@ function change(a) {
 			$("#g_con" + i + "").html("<p class='cssP'>" + g_name_a[i - 1] + "</p>"); //通过ajax把商品名传入
 			$("#g_con" + i + "").append("<p class='cssP2'>" + g_eng_name_a[i - 1] + "</p>"); //把商品英文名传入
 			$("#g_con" + i + "").append("<p class='cssP3'>价格：" + g_price_a[i - 1] + "</p>"); //商品价格
+			$("#g_con" + i + "").append("<img class='addcarbtn' src='img/admin/addcar.gif' id='addcarbtn"+i+"'/>"); //=====
 			$("#g_list" + i + "").attr("data-am-collapse", "{parent: '#accordion', target: '#xiangqing" + i + "'}"); //更改 list的id属性 变为折叠
 			$("#g_list" + i + "").after("<div class='panelCss am-collapse' id='xiangqing" + i + "'></div>"); //添加折叠panel
 			//添加介绍详情已经添加到购物车按钮
@@ -112,7 +113,22 @@ function change(a) {
 					addList(a);
 				};
 			});
+			$("#addcarbtn"+j+"").click(function(e){   //添加图标添加商品
+				add();
+				e.stopPropagation();  //祖师父元素click事件的冒泡
+				var a = this.id.replace(/[^0-9]/ig, ""); //获取当前点击的商品的id最后的数字
+				var n = g_name_a[a - 1];
+				var r = $("#shopList").text();
+				if (r.indexOf(n) >= 0) { //若已选商品里面已经有该商品，则在数量上+1
+					var a2 = $("div :contains(" + n + ")").children("span#addn").text();
+					a2 = parseInt(a2) + 1;
+					$("div :contains(" + n + ")").children("span#addn").text(a2);
+				} else {
+					addList(a);
+				};
+			})
 		};
+		
 
 	}
 	//=========================================================================
@@ -131,7 +147,10 @@ $(document).ready(function() {
 			} else {
 				$("#user").text(" ");
 				$("#shopEnter").addClass("am-disabled")
-				$("#shopEnter").text("请先登录");
+				$("#shopEnter").text("请先登录").css('border','2px solid black');
+				$("#img8").show('slow',function(){
+					$("#img8").hide('10000');
+				});
 			}
 		}
 	});
@@ -172,7 +191,7 @@ function dec() { //定义函数dec  减少购物车函数          ij为全局�
 	$("#end").text("已选:" + ij + "件");
 };
 
-function addList(a) { //定义函数addList 添加商品到已选列表
+function addList(a) { //定义函数addList 添加商品到已选列表  <span id='addx'>x</span>  这个删除了
 	$("#shopList").append("<div class='shopListx' id='shopListx'>" + g_name_a[a - 1] + "<span id='addx'>x</span><span id='addp'>+</span><span id='addn'>1</span><span id='addd'>-</span></div>")
 };
 
@@ -196,7 +215,7 @@ function addDataBase() { //把用户订单添加到数据库中
 				"zhuohao":zhuohao
 			},
 			success: function() {
-				alert("提交成功");
+				alert("提交成功，可以从个人订单查询");
 			}
 		});
 	}
@@ -260,4 +279,7 @@ $(window).scroll(function() { //添加回到顶部按钮  当屏幕下拉超过1
 });
 $("button.user").click(function(){
 	$('#doc-oc-demo2').offCanvas({effect: 'push'});
+});
+$("#userdingdan").click(function(){
+	window.location.href='chakandingdan.html';
 })

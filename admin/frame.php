@@ -19,7 +19,13 @@ if ($sess == 'admin888') {
 			$name1 = iconv("UTF-8", "GBK", $_FILES['file']['name']);
 			$name2 = $_FILES['file']['name'];
 			if (file_exists("../img/" . $_FILES['file']['name'])) {
-				echo $name1 . "已存在";
+				//====
+				move_uploaded_file($_FILES['file']["tmp_name"], "../img/" . $name1);
+				mysql_select_db("login", $link);
+				mysql_query("insert into $fenzu values('','$name0','$price','$eng_name','$name2','$jianjie')");
+				echo "上传成功" . "<a href='frame.html'>返回</a>";
+				//====
+				echo $name1 . "图片已存在,无需上传";
 			} else {
 				move_uploaded_file($_FILES['file']["tmp_name"], "../img/" . $name1);
 				mysql_select_db("login", $link);

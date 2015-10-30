@@ -108,13 +108,13 @@ $("ul#fuyuansu li:eq(4)").click(function() { //点击 删除分组  删除分组
 
 function xiajia() { //下架商品
 	$(".conten").children().remove();
-	$(".conten").append("<div class='select1'>选择分组<br/><select id='select1'><option disabled=''>请选择</option></select></div>");
+	$(".conten").append("<div class='select1'>选择分组<br/><select id='select1'><option disabled=''>请选择</option></select></div><div id='selectgood'></div><div class='butcon'><button id='xiajiabtn'>确认下架</button></div>");
 	liebiao();
 	var a; //选择分组名
 	var b; //选择商品名
 	$("#select1").change(function() {
 		a = $(this).val();
-		$(".conten").append("<div id='selectgood'></div><div class='butcon'><button id='xiajiabtn'>确认下架</button></div>");
+		$("#selectgood").append("<div id='selectgood1'></div>");
 		$("#selectgood").children().remove();
 		$.ajax({
 			type: "post",

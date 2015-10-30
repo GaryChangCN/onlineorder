@@ -7,7 +7,7 @@
 		<!--<meta name="x5-fullscreen" content="true" />
 		<meta name="browsermode" content="application" />-->
 		<!--<link rel="stylesheet" type="text/css" href="css/amazeui.min.css" />-->
-		<link rel="stylesheet" type="text/css" href="http://cdn.amazeui.org/amazeui/2.4.2/css/amazeui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="http://cdn.amazeui.org/amazeui/2.4.2/css/amazeui.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/menu.css" />
 		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 		<script src="http://cdn.amazeui.org/amazeui/2.4.2/js/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
@@ -16,55 +16,59 @@
 
 	<body>
 		<!--<button class="am-btn am-btn-primary" data-am-offcanvas="{target: '#doc-oc-demo2', effect: 'push'}">点击显示侧边栏</button>-->
-		<div>   <!--顶部和底部的结构-->
-			<div class="zhezhao">
-				<!--遮罩图层-->
-			</div>
-			<div class="daohang">
-				<!--用户页面-->
-				<div class="logo"><img class="logo" src="img/admin/漫猫logo.png" /></div>
-				<div style="float: left;font-size:20px;padding-top: 0px; font-family: '微软雅黑';padding-left: 5px;color: red;">
-				</span>M<span style="color: black;">A</span></span>ANCAT COFFEE<br />
+			<div>
+				<!--顶部和底部的结构-->
+				<div class="zhezhao">
+					<!--遮罩图层-->
 				</div>
-				<div class="suggestion">
-					
+				<div class="daohang">
+					<!--用户页面-->
+					<div class="logo"><img class="logo" src="img/admin/漫猫logo.png" /></div>
+					<div style="float: left;font-size:20px;padding-top: 0px; font-family: '微软雅黑';padding-left: 5px;color: red;">
+						</span>M<span style="color: black;">A</span></span>ANCAT COFFEE
+						<br />
+					</div>
+					<div class="suggestion">
+
+					</div>
+					<button class="user am-btn">
+						<!--侧边栏开启按钮-->
+						<img src="img/admin/cebian.png" id="cebian" data-am-offcanvas="{target: '#doc-oc-demo2', effect: 'push'}" />
+					</button>
 				</div>
-				<button class="user am-btn">                   <!--侧边栏开启按钮-->
-					<img src="img/admin/cebian.png" id="cebian" data-am-offcanvas="{target: '#doc-oc-demo2', effect: 'push'}" />
-				</button>
+				<img id="img8" src="img/admin/指示.gif" />
+				<div id="toppp" class="am-btn " data-am-smooth-scroll>
+					<!--回到顶部-->
+					<img id="topp" src="img/admin/top.png" />
+				</div>
 			</div>
-			<div id="toppp" class="am-btn " data-am-smooth-scroll>
-				<!--回到顶部-->
-				<img id="topp" src="img/admin/top.png" />
+			<div class="container">
+				<!--主菜单部分-->
 			</div>
-		</div>
-		<div class="container">
-              <!--主菜单部分-->
-		</div>
-		<div style="width: 100%;height: 200px;font-family: '宋体';padding-top: 100px;text-align: center;">
-			漫猫咖啡-无纸化菜单3.0
-		</div>
-		<div class="endCss" id="end">
-			<!--底部导航条-->
-			已选:0件
-		</div>
-		<!--购物车按钮-->
-		<button class="shopCarCss am-btn" id="shopCar">
-			<img class="imgShopcar" src="img/admin/shopcar.gif" />
-		</button>
-		<div class="shopListCss" id="shopList">
-			<!--popup弹出已选商品列表-->
-			<div class="shopListTittle" style="text-align: center;font-family: '宋体';padding-top: 2px;font-size: larger;border-bottom: 1px solid dimgrey;">
-				已选商品
-				<span id="clearShopCar">
+			<div style="width: 100%;height: 200px;font-family: '宋体';padding-top: 100px;text-align: center;">
+				图片以实物为准<br/><span style="font-size: small;">漫猫咖啡-无纸化菜单3.0.0</span>
+			</div>
+			<div class="endCss" id="end">
+				<!--底部导航条-->
+				已选:0件
+			</div>
+			<!--购物车按钮-->
+			<button class="shopCarCss am-btn" id="shopCar">
+				<img class="imgShopcar" src="img/admin/shopcar.gif" />
+			</button>
+			<div class="shopListCss" id="shopList">
+				<!--popup弹出已选商品列表-->
+				<div class="shopListTittle" style="text-align: center;font-family: '宋体';padding-top: 2px;font-size: larger;padding-bottom: 15px;  border-bottom: 1px solid dimgrey;">
+					已选商品
+					<span id="clearShopCar">
 					清空
 				</span>
+				</div>
 			</div>
-		</div>
 
 		</div>
 		<!--确认购买按钮-->
-		<button class="am-btn btnCss" id="shopEnter">确认购买</button>
+		<button class="am-btn btnCss" id="shopEnter">提交订单</button>
 		<!--购物车上面角标显示购买了几件商品-->
 		<div class="shopCountCss" id="shopCount">
 			0
@@ -79,7 +83,7 @@
 					<div class="xinxi">
 						<div class="zhuohao">
 							桌号：
-							<span id="zhuohao">15</span>
+							<span id="zhuohao">未扫码</span>
 						</div>
 						<div id="userdingdan">
 							查看订单

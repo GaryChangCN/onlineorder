@@ -114,6 +114,40 @@ $('#date0').datepicker().on('changeDate.datepicker.amui', function() {
 	s_min_a = s_min.split("#");
 	$(".conten table tbody").children().remove();
 	for (var i = 1; i <= s_name_a.length; i++) {
-		$(".conten table tbody").append("<tr><th>" + i + "</th><th>" + s_name_a[i - 1] + "</th><th>" + s_goods_a[i - 1] + "</th><th>" + s_shuliang_a[i - 1] + "</th><th>" + s_zhuohao_a[i - 1] + "</th><th>" + s_min_a[i - 1] + "</th></tr>")
+		$(".conten table tbody").append("<tr><th>" + i + "</th><th>" + s_name_a[i - 1] + "</th><th>" + s_goods_a[i - 1] + "</th><th>" + s_shuliang_a[i - 1] + "</th><th>" + s_zhuohao_a[i - 1] + "</th><th>" + s_min_a[i - 1] + "</th></tr>");
 	};
+});
+$("ul#fuyuansu li:eq(1)").click(function() { //点击用户订单 查找用户订单
+	$(".conten").children().remove();
+	$(".conten").append("<div id='c2'><select id='select1'><option disabled=''>请选择用户</option></select></div><div id='c3'></div>");
+	var user_a=new Array;
+	$.ajax({
+		type:"post",
+		url:"chaxunuser.php",
+		async:false,
+		success:function(data){
+			user_a=data.split("#");
+			for (var i=1;i<=user_a.length;i++) {
+				$("#select1").append("<option value='"+user_a[i-1]+"'>"+user_a[i-1]+"</option>")
+			}
+		}
+	});
+	$("#select1").change(function(){
+	var a=$("#select1").val();
+	$.ajax({
+		type:"post",
+		url:"chaxunuserdingdan.php",
+		async:false,
+		data:{
+			"name":a
+		},
+		success:function(data){
+			if (data.indexOf("Warning")>=0) {
+				$("#c3").html("该用户没有下过订单");
+			} else{
+				$("#c3").html(data);
+			}
+		}
+	});
+})
 });
